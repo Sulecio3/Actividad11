@@ -1,5 +1,6 @@
 impuestos = {}
 vehiculos = {}
+carros2 = {}
 cantidad = int(input("Ingrese la cantidad de propietarios que desee ingresar: "))
 for i in range(cantidad):
     print(f"Propietario {i+1}")
@@ -42,4 +43,13 @@ for nit in impuestos:
 
 buscar = int(input("Ingrese el nit por el cual quiere buscar al propietario: "))
 if buscar in impuestos:
-    print("")
+    impuestoPagados = 0
+    impuestoNoPagados = 0
+    if carros2["estadoImpuesto"] == "s":
+        impuestoPagados +=1
+    else:
+        impuestoNoPagados +=1
+    print(f"Carros con impuestos pagados: {impuestoPagados}")
+    print(f"Carros con impuestos No pagados: {impuestoNoPagados}")
+else:
+    print("Ese propietario no existe")
