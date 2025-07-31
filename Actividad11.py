@@ -1,6 +1,8 @@
 impuestos = {}
 vehiculos = {}
 carros2 = {}
+impuestoPagados = 0
+impuestoNoPagados = 0
 cantidad = int(input("Ingrese la cantidad de propietarios que desee ingresar: "))
 for i in range(cantidad):
     print(f"Propietario {i+1}")
@@ -39,17 +41,19 @@ for nit in impuestos:
     print("vehiculos:")
     for placa in vehiculos:
         carros2 = vehiculos[placa]
-        print("- ", "|", placa, "|",carros2["marca"],"|",carros2["modelo"],"|", carros2["año"],"Impuestos: ",carros2["estadoImpuesto"])
-
-buscar = int(input("Ingrese el nit por el cual quiere buscar al propietario: "))
-if buscar in impuestos:
-    impuestoPagados = 0
-    impuestoNoPagados = 0
-    if carros2["estadoImpuesto"] == "s":
-        impuestoPagados +=1
+        print("- ", "|", placa, "|",carros2["marca"],"|",carros2["modelo"],"|", carros2["año"], "|","Impuestos: ",carros2["estadoImpuesto"])
+        if carros2["estadoImpuesto"] == "s":
+            impuestoPagados += 1
+        else:
+            impuestoNoPagados += 1
+while True:
+    buscar = int(input("Ingrese el nit por el cual quiere buscar al propietario: "))
+    if buscar in impuestos:
+        print(f"Carros con impuestos pagados: {impuestoPagados}")
+        print(f"Carros con impuestos No pagados: {impuestoNoPagados}")
+        break
     else:
-        impuestoNoPagados +=1
-    print(f"Carros con impuestos pagados: {impuestoPagados}")
-    print(f"Carros con impuestos No pagados: {impuestoNoPagados}")
-else:
-    print("Ese propietario no existe")
+        print("Ese propietario no existe")
+        otra = input("Quiere probar con otro codigo (s/n): ").lower()
+        if otra != "s":
+            break
