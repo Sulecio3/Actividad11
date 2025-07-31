@@ -39,3 +39,7 @@ for nit in impuestos:
     for placa in vehiculos:
         carros2 = vehiculos[placa]
         print("- ", "|", placa, "|",carros2["marca"],"|",carros2["modelo"],"|", carros2["año"],"Impuestos: ",carros2["estadoImpuesto"])
+
+buscar = int(input("Ingrese el nit por el cual quiere buscar al propietario: "))
+if buscar in impuestos:
+    print("")
